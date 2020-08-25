@@ -1,0 +1,80 @@
+<ion-grid>
+
+  <div *ngIf="cliente.tipoId === 'cc'">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Nombre: {{ cliente.primerNombre }} {{ cliente.segundoNombre }} {{ cliente.apellidos }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row *ngIf="cliente.nombreComercial">
+      <ion-col>
+        <ion-item>
+          <ion-label>Nombre Comercial: {{ cliente.nombreComercial }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>CC: {{ cliente.numeroId }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div *ngIf="cliente.tipoId === 'nit'">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Razón Social: {{ cliente.razonSocial }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>NIT: {{ cliente.numeroId }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Dirección: {{ cliente.direccion }}</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Teléfono: {{ cliente.telefono }}</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Ciudad: {{ cliente.ciudad }} - {{ cliente.departamento }}</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button class="ion-margin" color="primary" expand="block" size="large" (click)="elegirProductos()">Siguiente</ion-button>
+    </ion-col>
+  </ion-row>
+
+
+</ion-grid>

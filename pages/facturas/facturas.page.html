@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>Facturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-pre-facturas *ngIf="!facturasService.ordenElegida"></app-pre-facturas>
+  <app-pre-factura *ngIf="facturasService.ordenElegida"></app-pre-factura>
+</ion-content>

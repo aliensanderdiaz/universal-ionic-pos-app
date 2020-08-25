@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Ordenes</ion-title>
+    <ion-buttons slot="end">
+        
+        <ion-button (click)="reiniciar()">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-buscar-cliente *ngIf="ordenesService.buscarCliente"></app-buscar-cliente>
+  <app-cliente *ngIf="ordenesService.clienteEncontrado"></app-cliente>
+  <app-crear-cliente *ngIf="ordenesService.crearCliente"></app-crear-cliente>
+  <app-buscar-productos *ngIf="ordenesService.buscarProductos"></app-buscar-productos>
+  <app-orden *ngIf="ordenesService.orden"></app-orden>
+  <app-formas-de-pago *ngIf="ordenesService.formasDePago"></app-formas-de-pago>
+</ion-content>

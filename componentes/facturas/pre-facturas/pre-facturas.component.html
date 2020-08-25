@@ -1,0 +1,15 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+
+      <ion-item *ngFor="let orden of ordenes; index as i" (click)="elegirOrden(i)">
+        <ion-label>
+          <h3>{{ orden.cliente.primerNombre }} {{ orden.cliente.apellidos }}</h3>
+          <p>{{ orden.total | currency:undefined:'symbol-narrow':'1.2-2':'es-Co' }}</p>
+          <p *ngFor="let item of orden.productos">{{ item.cantidad }} - {{ item.producto.nombre }}</p>
+        </ion-label>
+      </ion-item>
+      
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,64 @@
+<ion-grid>
+
+  <ion-row>
+    <ion-col>
+      <h3>Elegir Método de Pago</h3>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <h3 class="ion-text-end">Total a pagar</h3>
+    </ion-col>
+    <ion-col>
+      <h3 class="ion-text-end">{{ total | currency:undefined:'symbol-narrow':'1.2-2':'es-Co' }}</h3>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="metodosDePagoTemporal.length > 0">
+    <ion-col>
+      <ion-item *ngFor="let metodoDePago of metodosDePagoTemporal">
+        <ion-label position="stacked">{{ metodoDePago.metodoDePago.nombre }}</ion-label>
+        <ion-input type="number" readonly [value]="metodoDePago.cantidad"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="metodoElegido">
+    <ion-col size="10">
+      <ion-item>
+        <ion-label position="stacked">{{ metodoTemporal.nombre }}</ion-label>
+        <ion-input type="number" min="0" [max]="total" [(ngModel)]="totalMetodoElegido"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button (click)="verificarTotales()">
+        <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="!cargandoResolucion && !metodoElegido && otroMetodoDePago">
+    <ion-col>
+      <ion-button color="primary" size="large" expand="block" (click)="agregarMetodoDePago()">
+        Agregar Método de Pago
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="ordenCompletada">
+    <ion-col>
+      <ion-button color="primary" size="large" expand="block" (click)="crearOrden()">
+        Crear Orden
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+
+</ion-grid>

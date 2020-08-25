@@ -1,0 +1,84 @@
+<ion-grid *ngIf="orden">
+
+  <ion-row>
+    <ion-col>
+
+      <ion-button color="primary" expand="block" size="large" (click)="verOrdenes()">Volver</ion-button>
+
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+
+      <ion-item>
+        <ion-label>
+          <h3>Cliente: {{ orden.cliente.primerNombre }} {{ orden.cliente.apellidos }}</h3>
+          <h3>Vendedor: {{ orden.vendedor.primerNombre }} {{ orden.vendedor.apellidos }}</h3>
+          <p *ngFor="let item of orden.productos">{{ item.cantidad }} - {{ item.producto.nombre }}</p>
+          <h3>TOTAL: {{ orden.total | currency:undefined:'symbol-narrow':'1.2-2':'es-Co' }}</h3>
+        </ion-label>
+      </ion-item>
+
+      <!-- <ion-item *ngFor="let item of orden.metodosDePago">
+        <ion-label>
+          <h3>{{ item.metodoDePago.nombre }} - {{ item.cantidad | currency:undefined:'symbol-narrow':'1.2-2':'es-Co' }}
+          </h3>
+        </ion-label>
+        <ion-input type="text" *ngIf="item.metodoDePago.comprobante" placeholder="Comprobante"></ion-input>
+      </ion-item> -->
+
+    </ion-col>
+  </ion-row>
+
+  <div *ngFor="let item of orden.metodosDePago; index as i">
+
+
+
+    <ion-row>
+      <ion-col>
+        <h3>
+          {{ item.metodoDePago.nombre }} - {{ item.cantidad | currency:undefined:'symbol-narrow':'1.2-2':'es-Co' }}
+        </h3>
+
+        <ion-row *ngIf="item.metodoDePago.comprobante">
+          <ion-col size="10">
+            <ion-input type="text" placeholder="Comprobante" [(ngModel)]="item.comprobante"></ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="verificarMetodo(i, 'comprobante')" [color]="item.comprobado ? 'success' : 'primary'">
+              <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="item.metodoDePago.cambio">
+          <ion-col size="10">
+            <ion-input type="number" placeholder="Cash" [(ngModel)]="item.cash">
+            </ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="verificarMetodo(i, 'cambio')" [color]="item.comprobado ? 'success' : 'primary'">
+              <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="10">
+            <ion-input type="text" *ngIf="item.metodoDePago.cambio" placeholder="Vueltas" [(ngModel)]="item.vueltas"
+              readonly></ion-input>
+          </ion-col>
+          <ion-col size="2">
+          </ion-col>
+        </ion-row>
+
+
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-row *ngIf="ordenCompletada">
+    <ion-col>
+        <ion-button color="primary" expand="block" size="large" (click)="crearFactura()">Crear Factura</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>

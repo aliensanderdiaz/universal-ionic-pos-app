@@ -1,0 +1,43 @@
+<ion-app>
+  <ion-menu side="start">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title class="ion-text-center">
+          Almacenes Universal
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/ordenes">
+            <ion-icon name="business" slot="start"></ion-icon>
+            <ion-label>Ordenes</ion-label>
+          </ion-item>
+
+            <ion-item lines="none" routerLink="/facturas">
+              <ion-icon name="business" slot="start"></ion-icon>
+              <ion-label>Facturas</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        <!-- <ion-menu-toggle>
+            <ion-item lines="none" click="reiniciar()">
+              <ion-icon name="trash" slot="start"></ion-icon>
+              <ion-label>Reiniciar</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+
+        <ion-menu-toggle>
+          <ion-item lines="none" (click)="onLogout()" button>
+            <ion-icon name="exit" slot="start"></ion-icon>
+            <ion-label>Salir</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>
